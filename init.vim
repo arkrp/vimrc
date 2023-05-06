@@ -1,4 +1,4 @@
-
+"f
 call plug#begin()
 "f autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -35,25 +35,42 @@ let g:slime_no_mappings = 1
  
 "f keybindings!
 "f visual mode
-vnoremap <Leader>' :<c-u>call SurroundWithFold()<CR>
-function SurroundWithFold()
-    let first_line = getline("'<")
-    let first_line_whitespace = matchstr("^\s*a","   a")
+vnoremap <Leader>' :<c-u>call SurroundWithNamedFold()<CR>
+vnoremap <Leader>; :<c-u>call SurroundWithUnnamedFold()<CR>
+function SurroundWithNamedFold() "f
+    "f aquire needed strings!
+    let first_line_whitespace = matchstr(getline("'<"),"^\\s*")
     let foldDescription = input("Fold description! ")
     let [left_foldmarker, right_foldmarker] = split(&foldmarker, ',')
+    "d
+    "f add foldmarkers!
     call append(line("'<")-1, first_line_whitespace.left_foldmarker." ".foldDescription)
-    call append(line("'>"), right_foldmarker)
-    execute "normal! zc"
-    "let words = @"
-    "let words = left_foldmarker." ".foldDescription."\n".words.right_foldmarker."\n"
-    "let @" = words
-    ":normal! Pzc
-endfunction
-a"f fold
-    "asdlfhalsdflasjdfhal
-"d
-    "asdlfhalsdflasjdfhal
-    "lASKJfladsjflj
+    call append(line("'>"), first_line_whitespace.right_foldmarker)
+    "d
+    "f refresh folds!
+    execute "normal! zMzvzc"
+    "d
+endfunction "d
+function SurroundWithUnnamedFold() "f
+    "f make sure we have <2 lines!
+    if getline("'<")==getline("'>")
+        echo "Select at least two lines"
+        return 0
+    endif
+    "d
+    "f aquire needed strings!
+    let first_line = getline("'<")
+    let last_line = getline("'>")
+    let [left_foldmarker, right_foldmarker] = split(&foldmarker, ',')
+    "d
+    "f add foldmarkers!
+    call setline(line("'<"), first_line." ".left_foldmarker)
+    call setline(line("'>"), last_line." ".right_foldmarker)
+    "d
+    "f refresh folds
+    execute "normal! zMzvzc"
+    "d
+endfunction "d
 "d
 "f slime
 "\c send a cell!
@@ -70,5 +87,4 @@ nnoremap <Leader>p :SlimeSend1 plt.close('all')
 nnoremap <Leader>a :SlimeSend
 "d
 "d
-
 
