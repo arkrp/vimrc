@@ -16,19 +16,21 @@ call plug#end()
 "f settings
 "f set basic vim preferences
 " basic vim settings
-:set tabstop=4
-:set shiftwidth=4
+:set tabstop=2
+:set shiftwidth=2
 :set expandtab
-:set nowrap
+:set wrap
 :set number
 :set foldmethod=marker
-:set foldmarker=f,d
-autocmd FileType py setlocal foldmarker =#f,#d 
+:set foldmarker=//f,//d
+autocmd FileType python setlocal foldmarker =#f,#d 
 autocmd FileType vim setlocal foldmarker =\"f,\"d 
+autocmd FileType sql setlocal foldmarker =--\ f,--\ d
+au BufEnter,BufNew *.s setlocal foldmarker =;f,;d
 "d
 "f slime settings (for REPLs)
 let g:slime_target = 'tmux'
-let g:slime_cell_delimiter = "^\\s*##"
+let g:slime_cell_delimiter = "^.*##"
 let g:slime_no_mappings = 1
 "d
 "d
@@ -78,13 +80,13 @@ nnoremap <Leader>c <Plug>SlimeCellsSend
 "\v send a cell and jump to the next one!
 nnoremap <Leader>v <Plug>SlimeCellsSendAndGoToNext
 "\l launch ipython!
-nnoremap <Leader>l :SlimeSend1 ipython --matplotlib --no-autoindent 
+nnoremap <Leader>l :SlimeSend1 ipython --matplotlib --no-autoindent<enter>
 "\q send an exit command to anything we are running
-nnoremap <Leader>q :SlimeSend1 exit 
+nnoremap <Leader>q :SlimeSend1 exit<enter>
 "\p close all python plots
-nnoremap <Leader>p :SlimeSend1 plt.close('all') 
+nnoremap <Leader>p :SlimeSend1 plt.close('all')<enter>
 "\a send the current line
-nnoremap <Leader>a :SlimeSend
+nnoremap <Leader>v :SlimeSend<enter>
 "d
 "d
 
