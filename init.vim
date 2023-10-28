@@ -12,11 +12,8 @@ Plug 'klafyvel/vim-slime-cells'
 "d
 call plug#end()
 "d
-
 "f settings
-"f set basic vim preferences
-" basic vim settings
-"f configure universal settings
+"f configure basic preferences 
 :set tabstop=4
 :set shiftwidth=4
 :set expandtab
@@ -25,19 +22,26 @@ call plug#end()
 :set foldmethod=marker
 :set foldmarker=//f,//d
 "d
-"f configure language settings!
+"f configure language preferences!
 "f set foldmarkers!
 autocmd filetype python setlocal foldmarker =#f,#d 
+autocmd filetype r setlocal foldmarker =#f,#d 
 autocmd filetype vim setlocal foldmarker =\"f,\"d 
 autocmd filetype sql setlocal foldmarker =--\ f,--\ d
 au BufEnter,BufNew *.s setlocal foldmarker =;f,;d
 "d
-"f set REPL command!
+"f set REPL commands!
 " this sets the proper REPL command for the language in question. Different
 " languages require different programs and options to run
+"f python
 autocmd filetype python let repl_launch_command="ipython --matplotlib --no-autoindent" 
 autocmd filetype python let repl_exit_command="exit()" 
 autocmd filetype python let repl_utility_command="plt.close(\"all\")" 
+"d
+"f r
+autocmd filetype r let repl_launch_command="R" 
+autocmd filetype r let repl_exit_command="q(\"no\")" 
+autocmd filetype r let repl_utility_command="# Utility command not configured" 
 "d
 "d
 "d
@@ -47,7 +51,6 @@ let g:slime_cell_delimiter = "^.*##"
 let g:slime_no_mappings = 1
 "d
 "d
- 
 "f keybindings!
 "f visual mode
 vnoremap <Leader>' :<c-u>call SurroundWithNamedFold()<CR>
