@@ -1,4 +1,4 @@
-"f
+"f plugins
 call plug#begin()
 "f autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -16,17 +16,30 @@ call plug#end()
 "f settings
 "f set basic vim preferences
 " basic vim settings
-:set tabstop=2
-:set shiftwidth=2
+"f configure universal settings
+:set tabstop=4
+:set shiftwidth=4
 :set expandtab
 :set wrap
 :set number
 :set foldmethod=marker
 :set foldmarker=//f,//d
-autocmd FileType python setlocal foldmarker =#f,#d 
-autocmd FileType vim setlocal foldmarker =\"f,\"d 
-autocmd FileType sql setlocal foldmarker =--\ f,--\ d
+"d
+"f configure language settings!
+"f set foldmarkers!
+autocmd filetype python setlocal foldmarker =#f,#d 
+autocmd filetype vim setlocal foldmarker =\"f,\"d 
+autocmd filetype sql setlocal foldmarker =--\ f,--\ d
 au BufEnter,BufNew *.s setlocal foldmarker =;f,;d
+"d
+"f set REPL command!
+" this sets the proper REPL command for the language in question. Different
+" languages require different programs and options to run
+autocmd filetype python let repl_launch_command="ipython --matplotlib --no-autoindent" 
+autocmd filetype python let repl_exit_command="exit()" 
+autocmd filetype python let repl_utility_command="plt.close(\"all\")" 
+"d
+"d
 "d
 "f slime settings (for REPLs)
 let g:slime_target = 'tmux'
@@ -79,14 +92,17 @@ endfunction "d
 nnoremap <Leader>c <Plug>SlimeCellsSend
 "\v send a cell and jump to the next one!
 nnoremap <Leader>v <Plug>SlimeCellsSendAndGoToNext
-"\l launch ipython!
-nnoremap <Leader>l :SlimeSend1 ipython --matplotlib --no-autoindent<enter>
-"\q send an exit command to anything we are running
-nnoremap <Leader>q :SlimeSend1 exit<enter>
-"\p close all python plots
-nnoremap <Leader>p :SlimeSend1 plt.close('all')<enter>
 "\a send the current line
-nnoremap <Leader>v :SlimeSend<enter>
+nnoremap <Leader>a :SlimeSend<enter>
+"\l launch repl!
+nnoremap <Leader>l :execute ":SlimeSend1 " . repl_launch_command
+"\q send an exit command to anything we are running
+nnoremap <Leader>q :execute ":SlimeSend1 " . repl_exit_command
+"\p close all python plots
+nnoremap <Leader>p :execute ":SlimeSend1 " . repl_utility_command
+"nnoremap <Leader>p :SlimeSend1 plt.close('all')<enter>
+"\s send a user specified command
+nnoremap <Leader>s :SlimeSend1 
 "d
 "d
 
