@@ -95,12 +95,11 @@ nnoremap <Leader>v <Plug>SlimeCellsSendAndGoToNext
 "\a send the current line
 nnoremap <Leader>a :SlimeSend<enter>
 "\l launch repl!
-nnoremap <Leader>l :execute ":SlimeSend1 " . repl_launch_command
+nnoremap <Leader>l :execute ":SlimeSend1 " . repl_launch_command<enter>
 "\q send an exit command to anything we are running
-nnoremap <Leader>q :execute ":SlimeSend1 " . repl_exit_command
+nnoremap <Leader>q :execute ":SlimeSend1 " . repl_exit_command<enter><enter>
 "\p close all python plots
-nnoremap <Leader>p :execute ":SlimeSend1 " . repl_utility_command
-"nnoremap <Leader>p :SlimeSend1 plt.close('all')<enter>
+nnoremap <Leader>p :execute ":SlimeSend1 " . repl_utility_command<enter><enter>
 "\s send a user specified command
 nnoremap <Leader>s :SlimeSend1 
 "d
