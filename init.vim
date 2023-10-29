@@ -30,25 +30,34 @@ autocmd filetype vim setlocal foldmarker =\"f,\"d
 autocmd filetype sql setlocal foldmarker =--\ f,--\ d
 au BufEnter,BufNew *.s setlocal foldmarker =;f,;d
 "d
-"f set REPL commands!
+"d
+"f slime settings (for REPLs)
+"f set general settings
+let g:slime_target = 'tmux'
+let g:slime_no_mappings = 1
+"d
+"f set language specific settings!
 " this sets the proper REPL command for the language in question. Different
 " languages require different programs and options to run
 "f python
 autocmd filetype python let repl_launch_command="ipython --matplotlib --no-autoindent" 
 autocmd filetype python let repl_exit_command="exit()" 
 autocmd filetype python let repl_utility_command="plt.close(\"all\")" 
+autocmd filetype python let g:slime_cell_delimiter="###"
 "d
 "f r
 autocmd filetype r let repl_launch_command="R" 
 autocmd filetype r let repl_exit_command="q(\"no\")" 
 autocmd filetype r let repl_utility_command="# Utility command not configured" 
+autocmd filetype r let g:slime_cell_delimiter="###"
+"d
+"f unrecognized files
+let repl_launch_command="no launch command set for this filetype" 
+let repl_exit_command="no exit command set for this filetype" 
+let repl_utility_command="no utility command set for this filetype" 
+let g:slime_cell_delimiter="cell delimiter not set"
 "d
 "d
-"d
-"f slime settings (for REPLs)
-let g:slime_target = 'tmux'
-let g:slime_cell_delimiter = "^.*##"
-let g:slime_no_mappings = 1
 "d
 "d
 "f keybindings!
@@ -99,28 +108,31 @@ endfunction "d
 "d
 "d
 "f slime
-"f \c send a cell!
+"f <Leader>c send a cell!
 "This needs the execute to work on some platforms?
 nnoremap <Leader>c :execute "normal \<Plug>SlimeCellsSend"<enter>
 "d
-"f \v send a cell and jump to the next one!
+"f <Leader>v send a cell and jump to the next one!
 "This needs the execute to work on some platforms?
 nnoremap <Leader>v :execute "normal \<Plug>SlimeCellsSendAndGoToNext"<enter>
 "d
-"f \a send the current line
+"f <Leader>a send the current line
 nnoremap <Leader>a :SlimeSend<enter>
 "d
-"f \l launch repl!
+"f <Leader>l launch repl!
 nnoremap <Leader>l :execute ":SlimeSend1 " . repl_launch_command<enter>
 "d
-"f \q send exit command!
+"f <Leader>q send exit command!
 nnoremap <Leader>q :execute ":SlimeSend1 " . repl_exit_command<enter><enter>
 "d
-"f \p send utility command!
+"f <Leader>p send utility command!
 nnoremap <Leader>p :execute ":SlimeSend1 " . repl_utility_command<enter><enter>
 "d
-"f \s send user specified command!
+"f <Leader>s send user specified command!
 nnoremap <Leader>s :SlimeSend1 
+"d
+"f <Leader>: make cell boundary!
+nnoremap <Leader>: :execute "normal O" . g:slime_cell_delimiter . " "<enter>j0
 "d
 "d
 "d
