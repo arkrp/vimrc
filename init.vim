@@ -52,9 +52,16 @@ let g:slime_no_mappings = 1
 "d
 "d
 "f keybindings!
+"f make space a leader!
+nmap <Space> <Leader>
+vmap <Space> <Leader>
+"d
 "f visual mode
+"f bind hotkeys!
 vnoremap <Leader>' :<c-u>call SurroundWithNamedFold()<CR>
 vnoremap <Leader>; :<c-u>call SurroundWithUnnamedFold()<CR>
+"d
+"f make visual mode functions
 function SurroundWithNamedFold() "f
     "f aquire needed strings!
     let first_line_whitespace = matchstr(getline("'<"),"^\\s*")
@@ -90,21 +97,30 @@ function SurroundWithUnnamedFold() "f
     "d
 endfunction "d
 "d
+"d
 "f slime
-"\c send a cell!
-nnoremap <Leader>c <Plug>SlimeCellsSend
-"\v send a cell and jump to the next one!
-nnoremap <Leader>v <Plug>SlimeCellsSendAndGoToNext
-"\a send the current line
+"f \c send a cell!
+"This needs the execute to work on some platforms?
+nnoremap <Leader>c :execute "normal \<Plug>SlimeCellsSend"
+"d
+"f \v send a cell and jump to the next one!
+"This needs the execute to work on some platforms?
+nnoremap <Leader>v :execute "normal \<Plug>SlimeCellsSendAndGoToNext"
+"d
+"f \a send the current line
 nnoremap <Leader>a :SlimeSend<enter>
-"\l launch repl!
+"d
+"f \l launch repl!
 nnoremap <Leader>l :execute ":SlimeSend1 " . repl_launch_command<enter>
-"\q send an exit command to anything we are running
+"d
+"f \q send exit command!
 nnoremap <Leader>q :execute ":SlimeSend1 " . repl_exit_command<enter><enter>
-"\p close all python plots
+"d
+"f \p send utility command!
 nnoremap <Leader>p :execute ":SlimeSend1 " . repl_utility_command<enter><enter>
-"\s send a user specified command
+"d
+"f \s send user specified command!
 nnoremap <Leader>s :SlimeSend1 
 "d
 "d
-
+"d
