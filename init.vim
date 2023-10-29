@@ -101,11 +101,11 @@ endfunction "d
 "f slime
 "f \c send a cell!
 "This needs the execute to work on some platforms?
-nnoremap <Leader>c :execute "normal \<Plug>SlimeCellsSend"
+nnoremap <Leader>c :execute "normal \<Plug>SlimeCellsSend"<enter>
 "d
 "f \v send a cell and jump to the next one!
 "This needs the execute to work on some platforms?
-nnoremap <Leader>v :execute "normal \<Plug>SlimeCellsSendAndGoToNext"
+nnoremap <Leader>v :execute "normal \<Plug>SlimeCellsSendAndGoToNext"<enter>
 "d
 "f \a send the current line
 nnoremap <Leader>a :SlimeSend<enter>
