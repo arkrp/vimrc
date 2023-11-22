@@ -94,12 +94,12 @@ function SurroundWithUnnamedFold() "f
     "d
     "f aquire needed strings!
     let first_line = getline("'<")
-    let last_line = getline("'>")
+    let first_line_whitespace = matchstr(getline("'<"),"^\\s*")
     let [left_foldmarker, right_foldmarker] = split(&foldmarker, ',')
     "d
     "f add foldmarkers!
     call setline(line("'<"), first_line." ".left_foldmarker)
-    call setline(line("'>"), last_line." ".right_foldmarker)
+    call append(line("'>"), first_line_whitespace.right_foldmarker)
     "d
     "f refresh folds
     execute "normal! zMzvzc"
