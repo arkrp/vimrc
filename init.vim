@@ -30,14 +30,14 @@ call plug#end()
 :set foldmethod=marker
 :set list
 " 
-"  fold stuff!
+"  fold stuff! "
 "  foldmarkers!
 :set foldmarker=//  , 
 autocmd filetype python setlocal foldmarker =#  ,# 
-autocmd filetype r setlocal foldmarker =#f,#d 
+autocmd filetype r setlocal foldmarker =#  ,# 
 autocmd filetype vim setlocal foldmarker =\"  ,\" 
 autocmd filetype sql setlocal foldmarker =--\ f,--\ d
-au BufEnter,BufNew *.s setlocal foldmarker =;f,;d
+autocmd BufEnter *.s setlocal foldmarker =;  ,; 
 " 
 "  hotkeys!
 vnoremap <Leader>' :<c-u>call SurroundWithNamedFold()<CR>
@@ -46,6 +46,8 @@ vnoremap <Leader>; :<c-u>call SurroundWithUnnamedFold()<CR>
 "  pretty fold text
 let fold_text_discriminator="@@@@"
 :set foldtext=CustomFoldText()
+autocmd BufEnter *.py let fold_text_discriminator="\\W*@"
+autocmd BufEnter *.txt let fold_text_discriminator="@@@@"
 " 
 "  functions!
 function SurroundWithNamedFold() "  
@@ -91,7 +93,7 @@ function CustomFoldText() "  
         let display_line=getline(display_line_number)
         let ick_found=(-1!=match(display_line, g:fold_text_discriminator))
     endwhile
-    return matchstr(foldtext(), "^.*:").display_line
+    return matchstr(foldtext(), "^.\\{-}:")."  ".matchstr(display_line,"\\w.*")
     "if ick_found
     "    let return_value="ick: ".display_line
     "else
