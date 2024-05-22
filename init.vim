@@ -46,7 +46,7 @@ vnoremap <Leader>; :<c-u>call SurroundWithUnnamedFold()<CR>
 "  pretty fold text
 let fold_text_discriminator="@@@@"
 :set foldtext=CustomFoldText()
-autocmd BufEnter *.py let fold_text_discriminator="\\W*@"
+autocmd BufEnter *.py let fold_text_discriminator="\\(^\\W*@\\)\\|\\(^\\W*\"\"\"\\)"
 autocmd BufEnter *.txt let fold_text_discriminator="@@@@"
 " 
 "  functions!
