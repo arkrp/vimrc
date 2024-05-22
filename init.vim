@@ -30,12 +30,17 @@ call plug#end()
 :set foldmethod=marker
 :set list
 " 
-"  fold stuff! "
+"  fold stuff!
 "  foldmarkers!
 :set foldmarker=//  , 
-autocmd filetype python setlocal foldmarker =#  ,# 
+:let g:left_foldmarker_with_comment='#  '
+autocmd filetype python setlocal foldmarker =#  , 
+autocmd BufEnter *.py let g:left_foldmarker_with_comment='#  '
 autocmd filetype r setlocal foldmarker =#  ,# 
+autocmd BufEnter *.r let g:left_foldmarker_with_comment='#  '
 autocmd filetype vim setlocal foldmarker =\"  ,\" 
+autocmd BufEnter *.vim let g:left_foldmarker_with_comment='\"  '
+"  This closes the fold inadvertently caused by the previous line
 autocmd filetype sql setlocal foldmarker =--\ f,--\ d
 autocmd BufEnter *.s setlocal foldmarker =;  ,; 
 " 
@@ -57,7 +62,7 @@ function SurroundWithNamedFold() "  
     let [left_foldmarker, right_foldmarker] = split(&foldmarker, ',')
     " 
     "   add foldmarkers!
-    call append(line("'<")-1, first_line_whitespace.left_foldmarker."".foldDescription)
+    call append(line("'<")-1, first_line_whitespace.g:left_foldmarker_with_comment."".foldDescription)
     call append(line("'>"), first_line_whitespace.right_foldmarker)
     " 
     "   refresh folds!
