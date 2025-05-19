@@ -18,6 +18,7 @@ Plug 'fannheyward/coc-marketplace'
 Plug 'jpalardy/vim-slime'
 Plug 'klafyvel/vim-slime-cells'
 " 
+Plug 'arkrp/fold-surround'
 call plug#end()
 " 
 " 
@@ -29,6 +30,7 @@ call plug#end()
 :set number
 :set foldmethod=marker
 :set list
+:colorscheme zellner
 " 
 "  fold stuff! "
 "  foldmarkers!
@@ -40,68 +42,14 @@ autocmd filetype sql setlocal foldmarker =--\ f,--\ d
 autocmd BufEnter *.s setlocal foldmarker =;  ,; 
 " 
 "  hotkeys!
-vnoremap <Leader>' :<c-u>call SurroundWithNamedFold()<CR>
-vnoremap <Leader>; :<c-u>call SurroundWithUnnamedFold()<CR>
+vnoremap <Leader>' :<c-u>call fold_surround#SurroundWithNamedFold()<CR>
+vnoremap <Leader>; :<c-u>call fold_surround#SurroundWithUnnamedFold()<CR>
 " 
 "  pretty fold text
-let fold_text_discriminator="@@@@"
-:set foldtext=CustomFoldText()
-autocmd BufEnter *.py let fold_text_discriminator="\\(^\\W*@\\)\\|\\(^\\W*\"\"\"\\)"
-autocmd BufEnter *.txt let fold_text_discriminator="@@@@"
-" 
-"  functions!
-function SurroundWithNamedFold() "  
-    "   aquire needed strings!
-    let first_line_whitespace = matchstr(getline("'<"),"^\\s*")
-    let foldDescription = input("Fold description! ")
-    let [left_foldmarker, right_foldmarker] = split(&foldmarker, ',')
-    " 
-    "   add foldmarkers!
-    call append(line("'<")-1, first_line_whitespace.left_foldmarker."".foldDescription)
-    call append(line("'>"), first_line_whitespace.right_foldmarker)
-    " 
-    "   refresh folds!
-    execute "normal! zMzvzc"
-    " 
-endfunction " 
-function SurroundWithUnnamedFold() "  
-    "   make sure we have <2 lines!
-    "if getline("'<")==getline("'>")
-    "   echo "Select at least two lines"
-    "   return 0
-    "endif
-    " 
-    "   aquire needed strings!
-    let first_line = getline("'<")
-    let first_line_whitespace = matchstr(getline("'<"),"^\\s*")
-    let [left_foldmarker, right_foldmarker] = split(&foldmarker, ',')
-    " 
-    "   add foldmarkers!
-    call setline(line("'<"), first_line." ".left_foldmarker)
-    call append(line("'>"), first_line_whitespace.right_foldmarker)
-    " 
-    "   refresh folds
-    execute "normal! zMzvzc"
-    " 
-endfunction " 
-function CustomFoldText() "  
-    let display_line_number=v:foldstart
-    let display_line=getline(display_line_number)
-    let ick_found=(-1!=match(display_line, g:fold_text_discriminator))
-    while ick_found
-        let display_line_number=display_line_number + 1
-        let display_line=getline(display_line_number)
-        let ick_found=(-1!=match(display_line, g:fold_text_discriminator))
-    endwhile
-    return matchstr(foldtext(), "^.\\{-}:")."  ".matchstr(display_line,"\\w.*")
-    "if ick_found
-    "    let return_value="ick: ".display_line
-    "else
-    "    let return_value="good: ".display_line
-    "endif
-    "return return_value
-endfunction
-" 
+let g:fold_surround_title_discriminator="@@@@"
+:set foldtext=fold_surround#CustomFoldText()
+autocmd BufEnter *.py let fold_surround_title_discriminator="\\(^\\W*@\\)\\|\\(^\\W*\"\"\"\\)"
+autocmd BufEnter *.txt let fold_surround_title_discriminator="@@@@"
 " 
 " 
 "  slime!
