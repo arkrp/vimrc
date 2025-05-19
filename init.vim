@@ -30,6 +30,7 @@ call plug#end()
 :set number
 :set foldmethod=marker
 :set list
+:set clipboard+=unnamedplus
 :colorscheme zellner
 " 
 "  fold stuff! "
@@ -48,7 +49,6 @@ vnoremap <Leader>; :<c-u>call fold_surround#SurroundWithUnnamedFold()<CR>
 "  configure fold title discriminators
 autocmd BufEnter *.py let fold_surround_title_discriminator="\\(^\\W*@\\)\\|\\(^\\W*\"\"\"\\)"
 autocmd BufEnter *.txt let fold_surround_title_discriminator="@@@@"
-" 
 " 
 " 
 "  slime!
