@@ -1,0 +1,18 @@
+Hello! This file details the custom bindings
+Sections:
+    SLIME
+    FOLD
+<Leader> is bound to both space and backslash
+SLIME - used for sending text to different tmux panes
+    <Leader>-c   send the current cell
+    <Leader>-v   send the current cell and move to the next
+    <Leader>-a   send the current line
+    <Leader>-l   send the configured repl_launch_command
+    <Leader>-q   send the configured repl_exit_command
+    <Leader>-p   send the configured repl_utility_command
+    <Leader>-s   send a command you type
+    <Leader>-:   create a cell delimiter
+    Recall: you can use ctrl-b-q to figure out what number each pane has
+FOLD - used to create and manipulate foldmarkers
+    <Leader>-' create a fold marker which has a name
+    <Leader>-; create a unnamed foldmarker

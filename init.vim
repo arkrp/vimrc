@@ -8,12 +8,6 @@ endif
 " 
 "   install plugins!
 call plug#begin()
-"   COC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/vim-jsx-improve'
-Plug 'clangd/coc-clangd'
-Plug 'fannheyward/coc-marketplace'
-" 
 "   slime
 Plug 'jpalardy/vim-slime'
 Plug 'klafyvel/vim-slime-cells'
@@ -32,6 +26,10 @@ call plug#end()
 :set list
 :set clipboard+=unnamedplus
 :colorscheme zellner
+" 
+"  helpful helpfile!
+autocmd VimEnter * echo "hi there!! type :HALP for custom keybinds!"
+command HALP tabnew ~/.config/nvim/HALP.txt
 " 
 "  fold stuff! "
 "  foldmarkers!
