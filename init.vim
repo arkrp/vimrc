@@ -45,11 +45,10 @@ autocmd BufEnter *.s setlocal foldmarker =;  ,; 
 vnoremap <Leader>' :<c-u>call fold_surround#SurroundWithNamedFold()<CR>
 vnoremap <Leader>; :<c-u>call fold_surround#SurroundWithUnnamedFold()<CR>
 " 
-"  pretty fold text
-let g:fold_surround_title_discriminator="@@@@"
-:set foldtext=fold_surround#CustomFoldText()
+"  configure fold title discriminators
 autocmd BufEnter *.py let fold_surround_title_discriminator="\\(^\\W*@\\)\\|\\(^\\W*\"\"\"\\)"
 autocmd BufEnter *.txt let fold_surround_title_discriminator="@@@@"
+" 
 " 
 " 
 "  slime!
