@@ -26,6 +26,7 @@ call plug#end()
 :set list
 :set clipboard+=unnamedplus
 :colorscheme zellner
+:cnoreabbrev nvim tabnew
 " 
 "  helpful helpfile!
 autocmd VimEnter * echo "hi there!! type :HALP for custom keybinds!"
