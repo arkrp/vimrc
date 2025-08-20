@@ -35,7 +35,7 @@ command HALP tabnew ~/.config/nvim/HALP.txt
 "  fold stuff! "
 "  foldmarkers!
 :set foldmarker=//  , 
-autocmd filetype python setlocal foldmarker =#  ,# 
+autocmd filetype python setlocal foldmarker =#section-start,#section-end
 autocmd filetype r setlocal foldmarker =#  ,# 
 autocmd filetype vim setlocal foldmarker =\"  ,\" 
 autocmd filetype sql setlocal foldmarker =--\ f,--\ d
@@ -46,7 +46,7 @@ vnoremap <Leader>' :<c-u>call fold_surround#SurroundWithNamedFold()<CR>
 vnoremap <Leader>; :<c-u>call fold_surround#SurroundWithUnnamedFold()<CR>
 " 
 "  configure fold title discriminators
-autocmd BufEnter *.py let fold_surround_title_discriminator="\\(^\\W*@\\)\\|\\(^\\W*\"\"\"\\)"
+autocmd BufEnter *.py let fold_surround_title_discriminator="\\(^\\W*@\\)"
 autocmd BufEnter *.txt let fold_surround_title_discriminator="@@@@"
 " 
 " 
