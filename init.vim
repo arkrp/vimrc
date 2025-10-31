@@ -28,6 +28,12 @@ call plug#end()
 :colorscheme zellner
 :cnoreabbrev nvim tabnew
 " 
+"  force commonly written files to be local
+"This speeds up remote operation a lot!
+set backupdir=~/.cache/nvim/backup//
+set directory=~/.cache/nvim/swap//
+set undodir=~/.cache/nvim/undo//
+" 
 "  helpful helpfile!
 autocmd VimEnter * echo "hi there!! type :HALP for custom keybinds!"
 command HALP tabnew ~/.config/nvim/HALP.txt
