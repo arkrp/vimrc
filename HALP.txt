@@ -13,6 +13,9 @@ SLIME - used for sending text to different tmux panes
     <Leader>-s   send a command you type
     <Leader>-:   create a cell delimiter
     Recall: you can use ctrl-b-q to figure out what number each pane has
+    The tmux command can create a target which nvim has been configured to send to by default:
+        tmux -L nvim_target
+
 FOLD - used to create and manipulate foldmarkers
     <Leader>-' create a fold marker which has a name
     <Leader>-; create a unnamed foldmarker

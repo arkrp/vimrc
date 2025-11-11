@@ -87,6 +87,7 @@ nnoremap <Leader>: :execute "normal O" . g:slime_cell_delimiter . " "<enter>j0
 " 
 "   general settings
 let g:slime_target = 'tmux'
+let g:slime_default_config = {"socket_name": "nvim_target", "target_pane": "0.0"}
 let g:slime_no_mappings = 1
 " 
 "   language utilities!
