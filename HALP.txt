@@ -1,8 +1,10 @@
 Hello! This file details the custom bindings
+
 Sections:
     SLIME
     FOLD
 <Leader> is bound to both space and backslash
+
 SLIME - used for sending text to different tmux panes
     <Leader>-c   send the current cell
     <Leader>-v   send the current cell and move to the next
@@ -19,3 +21,5 @@ SLIME - used for sending text to different tmux panes
 FOLD - used to create and manipulate foldmarkers
     <Leader>-' create a fold marker which has a name
     <Leader>-; create a unnamed foldmarker
+
+This nvim setup uses vim-plug. If you are having problems with plugins you can use :PlugInstall to make sure they are installed

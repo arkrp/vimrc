@@ -25,8 +25,12 @@ call plug#end()
 :set foldmethod=marker
 :set list
 :set clipboard+=unnamedplus
-:colorscheme zellner
+:colorscheme default
 :cnoreabbrev nvim tabnew
+"  make space a leader!
+nmap <Space> <Leader>
+vmap <Space> <Leader>
+" 
 " 
 "  force commonly written files to be local
 "This speeds up remote operation a lot!
@@ -110,8 +114,4 @@ let repl_utility_command="no utility command set for this filetype"
 let g:slime_cell_delimiter="cell delimiter not set"
 " 
 " 
-" 
-"  make space a leader!
-nmap <Space> <Leader>
-vmap <Space> <Leader>
 " 
