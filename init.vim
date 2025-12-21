@@ -88,6 +88,12 @@ nnoremap <Leader>s :SlimeSend1
 "   <Leader>: make cell boundary!
 nnoremap <Leader>: :execute "normal O" . g:slime_cell_delimiter . " "<enter>j0
 " 
+"   <Leader>j save the file and then send the contents of the j register
+nnoremap <Leader>j :w<Bar>SlimeSend1<space><C-r>j<enter>
+" 
+"   <Leader>J write something to the j register
+nnoremap <Leader>J :let @j=""<left>
+" 
 " 
 "   general settings
 let g:slime_target = 'tmux'
