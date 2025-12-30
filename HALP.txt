@@ -1,9 +1,13 @@
 Hello! This file details the custom bindings
 
 Sections:
+    NVIM
     SLIME
     FOLD
 <Leader> is bound to both space and backslash
+
+NVIM - basic custom keybinds
+    <C-j> save the file and then enter the contents of the j register as a vim command, intended as a quick save and compile hotkey
 
 SLIME - used for sending text to different tmux panes! Open up a target tmux and then send what you'd like to it!
     <Leader>-c   send the current cell

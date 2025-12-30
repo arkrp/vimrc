@@ -31,6 +31,9 @@ call plug#end()
 nmap <Space> <Leader>
 vmap <Space> <Leader>
 " 
+"   <C-j> Run the command from the j register
+nnoremap <C-j> :w<Bar><C-r>j<enter>
+" 
 " 
 "  force commonly written files to be local
 "This speeds up remote operation a lot!
