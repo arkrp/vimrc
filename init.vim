@@ -52,6 +52,7 @@ autocmd filetype python setlocal foldmarker =#section-start,#section-end
 autocmd filetype r setlocal foldmarker =#  ,# 
 autocmd filetype vim setlocal foldmarker =\"  ,\" 
 autocmd filetype sql setlocal foldmarker =--\ f,--\ d
+autocmd filetype tex setlocal foldmarker =%section-start,%section-end
 autocmd BufEnter *.s setlocal foldmarker =;  ,; 
 " 
 "  hotkeys!
