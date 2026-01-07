@@ -31,8 +31,9 @@ call plug#end()
 nmap <Space> <Leader>
 vmap <Space> <Leader>
 " 
-"   <C-j> Run the command from the j register
-nnoremap <C-j> :w<Bar><C-r>j<enter>
+"   <C-j> Run a custom command
+" This command is set by the custom_command variable
+nnoremap <C-j> :w<Bar><C-r>=custom_command<enter><enter>
 " 
 " 
 "  force commonly written files to be local
@@ -92,11 +93,11 @@ nnoremap <Leader>s :SlimeSend1
 "   <Leader>: make cell boundary!
 nnoremap <Leader>: :execute "normal O" . g:slime_cell_delimiter . " "<enter>j0
 " 
-"   <Leader>j save the file and then send the contents of the j register
-nnoremap <Leader>j :w<Bar>SlimeSend1<space><C-r>j<enter>
+"   <Leader>j save the file and then send the contents of the custom_command variable
+nnoremap <Leader>j :w<Bar>SlimeSend1<space><C-r>=custom_command<enter><enter>
 " 
-"   <Leader>J write something to the j register
-nnoremap <Leader>J :let @j=""<left>
+"   <Leader>J write something to the custom_command variable
+nnoremap <Leader>J :let custom_command=""<left>
 " 
 " 
 "   general settings

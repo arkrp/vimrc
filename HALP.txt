@@ -7,7 +7,7 @@ Sections:
 <Leader> is bound to both space and backslash
 
 NVIM - basic custom keybinds
-    <C-j> save the file and then enter the contents of the j register as a vim command, intended as a quick save and compile hotkey
+    <C-j> save the file and then enter the contents of the custom_command varaible as a vim command, intended as a quick save and compile hotkey
 
 SLIME - used for sending text to different tmux panes! Open up a target tmux and then send what you'd like to it!
     <Leader>-c   send the current cell
@@ -18,8 +18,8 @@ SLIME - used for sending text to different tmux panes! Open up a target tmux and
     <Leader>-p   send the configured repl_utility_command
     <Leader>-s   send a command you type
     <Leader>-:   create a cell delimiter
-    <Leader>-j   save the file and then send the contents of the j register. This is useful when you want to save and run your files with a single hotkey!
-    <Leader>-J   shortcut for writing something to the j register
+    <Leader>-j   save the file and then send the contents of the custom_command variable. This is useful when you want to save and run your files with a single hotkey!
+    <Leader>-J   shortcut for writing something to the custom_command variable
     Recall: you can use ctrl-b-q to figure out what number each pane has
     The tmux command can create a target which nvim has been configured to send to by default:
         tmux -L nvim_target
