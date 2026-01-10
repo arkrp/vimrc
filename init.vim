@@ -50,10 +50,11 @@ command HALP tabnew ~/.config/nvim/HALP.txt
 "  foldmarkers!
 :set foldmarker=//  , 
 autocmd filetype python setlocal foldmarker =#section-start,#section-end
-autocmd filetype r setlocal foldmarker =#  ,# 
+autocmd filetype r setlocal foldmarker =#section-start,#section-end
 autocmd filetype vim setlocal foldmarker =\"  ,\" 
-autocmd filetype sql setlocal foldmarker =--\ f,--\ d
+autocmd filetype sql setlocal foldmarker =--\ section-start,--\ section-end
 autocmd filetype tex setlocal foldmarker =%section-start,%section-end
+autocmd filetype dockerfile setlocal foldmarker =#section-start,#section-end
 autocmd BufEnter *.s setlocal foldmarker =;  ,; 
 " 
 "  hotkeys!
