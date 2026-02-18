@@ -13,6 +13,9 @@ Plug 'jpalardy/vim-slime'
 Plug 'klafyvel/vim-slime-cells'
 " 
 Plug 'arkrp/fold-surround'
+" the basic fzf library allows you to do things with fzf in vim using call
+" fzf#run details at https://github.com/junegunn/fzf/blob/master/README-VIM.md
+Plug 'junegunn/fzf'
 call plug#end()
 " 
 " 
