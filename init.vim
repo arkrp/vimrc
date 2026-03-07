@@ -13,6 +13,8 @@ Plug 'jpalardy/vim-slime'
 Plug 'klafyvel/vim-slime-cells'
 " 
 Plug 'arkrp/fold-surround'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 " 
 " 
