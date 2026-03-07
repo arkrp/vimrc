@@ -1,15 +1,26 @@
-Hello! This file details the custom bindings
+Hello! This file details the custom bindings and other helpful tips
 
-Sections:
+List of Sections: #section-start
+    GENERAL_INFO
     NVIM
     SLIME
     FOLD
+    FIND_AND_REPLACE
+#section-end
+
+GENERAL_INFO - details that aren't related to specific plugins. #section-start
+
 <Leader> is bound to both space and backslash
 
-NVIM - basic custom keybinds
-    <C-j> save the file and then enter the contents of the custom_command varaible as a vim command, intended as a quick save and compile hotkey
+This nvim setup uses vim-plug. If you are having problems with plugins you can use :PlugInstall to make sure they are installed
 
-SLIME - used for sending text to different tmux panes! Open up a target tmux and then send what you'd like to it!
+The normal commands zo and zc are used to expand and contract folds. That is the main feature that this config was built around. To see more check out FOLD
+
+#section-end
+NVIM - basic custom keybinds #section-start
+    <C-j> save the file and then enter the contents of the custom_command varaible as a vim command, intended as a quick save and compile hotkey
+#section-end
+SLIME - used for sending text to different tmux panes! Open up a target tmux and then send what you'd like to it! #section-start
     <Leader>-c   send the current cell
     <Leader>-v   send the current cell and move to the next
     <Leader>-a   send the current line
@@ -23,17 +34,15 @@ SLIME - used for sending text to different tmux panes! Open up a target tmux and
     Recall: you can use ctrl-b-q to figure out what number each pane has
     The tmux command can create a target which nvim has been configured to send to by default:
         tmux -L nvim_target
-
-FOLD - used to quickly create foldmarkers!
+#section-end
+FOLD - used to quickly create foldmarkers! #section-start
     <Leader>-' create a fold marker which has a name
     <Leader>-; create a unnamed foldmarker
 Both of these hotkeys are for VISUAL LINE mode meaning they create folds surrounding a set of lines!
-
-This nvim setup uses vim-plug. If you are having problems with plugins you can use :PlugInstall to make sure they are installed
-
-FIND AND REPLACE - for when I forget again.
+#section-end
+FIND_AND_REPLACE - for when I forget again. #section-start
     Replace through the whole file:
         :%s/pattern_to_replace/replacement_text/g
     Replace in the last VISUAL selection:
         :%s/\%Vpattern_to_replace/replacement_text/g
-
+#section-end

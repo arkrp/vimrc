@@ -50,7 +50,7 @@ command HALP tabnew ~/.config/nvim/HALP.txt
 " 
 "  fold stuff! "
 "  foldmarkers!
-:set foldmarker=//  , 
+:set foldmarker=#section-start,#section-end
 autocmd filetype python setlocal foldmarker =#section-start,#section-end
 autocmd filetype r setlocal foldmarker =#section-start,#section-end
 autocmd filetype vim setlocal foldmarker =\"  ,\" 
