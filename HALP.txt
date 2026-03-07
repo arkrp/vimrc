@@ -30,3 +30,10 @@ FOLD - used to quickly create foldmarkers!
 Both of these hotkeys are for VISUAL LINE mode meaning they create folds surrounding a set of lines!
 
 This nvim setup uses vim-plug. If you are having problems with plugins you can use :PlugInstall to make sure they are installed
+
+FIND AND REPLACE - for when I forget again.
+    Replace through the whole file:
+        :%s/pattern_to_replace/replacement_text/g
+    Replace in the last VISUAL selection:
+        :%s/\%Vpattern_to_replace/replacement_text/g
+
