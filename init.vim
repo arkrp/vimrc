@@ -27,6 +27,7 @@ call plug#end()
 :set foldmethod=marker
 :set list
 :set clipboard+=unnamedplus
+:set breakindent
 :colorscheme default
 :cnoreabbrev nvim tabnew
 "  make space a leader!
