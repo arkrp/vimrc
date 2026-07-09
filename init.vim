@@ -15,6 +15,7 @@ Plug 'klafyvel/vim-slime-cells'
 Plug 'arkrp/fold-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 " 
 " 
@@ -29,6 +30,14 @@ call plug#end()
 :set clipboard+=unnamedplus
 :set breakindent
 :colorscheme default
+"   prevent deletion commands from yanking
+vnoremap d "_d
+nnoremap d "_d
+vnoremap x "_x
+nnoremap x "_x
+vnoremap c "_c
+nnoremap c "_c
+" 
 "  make space a leader!
 nmap <Space> <Leader>
 vmap <Space> <Leader>
@@ -42,12 +51,14 @@ nnoremap <C-j> :w<Bar><C-r>=custom_command<enter><enter>
 nnoremap <Leader>J :let custom_command=""<left>
 " 
 " 
+"   configure netrw
 let g:netrw_keepdir = 0
 let g:netrw_winsize = 30
 let g:netrw_banner = 0
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_localcopydircmd = 'cp -r'
 let g:netrw_localrmdircmd = 'rm -rf'
+" 
 " 
 "  force commonly written files to be local
 "This speeds up remote operation a lot!
@@ -137,3 +148,4 @@ let g:slime_cell_delimiter="cell delimiter not set"
 " 
 " 
 " 
+cnoreabbrev git Git
