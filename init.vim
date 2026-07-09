@@ -19,8 +19,8 @@ call plug#end()
 " 
 " 
 "  basic preferences
-:set tabstop=4
-:set shiftwidth=4
+:set tabstop=3
+:set shiftwidth=3
 :set expandtab
 :set wrap
 :set number
@@ -29,15 +29,25 @@ call plug#end()
 :set clipboard+=unnamedplus
 :set breakindent
 :colorscheme default
-:cnoreabbrev nvim tabnew
 "  make space a leader!
 nmap <Space> <Leader>
 vmap <Space> <Leader>
 " 
+"   quick custom commands
 "   <C-j> Run a custom command
 " This command is set by the custom_command variable
 nnoremap <C-j> :w<Bar><C-r>=custom_command<enter><enter>
 " 
+"   <Leader>J write something to the custom_command variable
+nnoremap <Leader>J :let custom_command=""<left>
+" 
+" 
+let g:netrw_keepdir = 0
+let g:netrw_winsize = 30
+let g:netrw_banner = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_localcopydircmd = 'cp -r'
+let g:netrw_localrmdircmd = 'rm -rf'
 " 
 "  force commonly written files to be local
 "This speeds up remote operation a lot!
@@ -99,9 +109,6 @@ nnoremap <Leader>: :execute "normal O" . g:slime_cell_delimiter . " "<enter>j0
 " 
 "   <Leader>j save the file and then send the contents of the custom_command variable
 nnoremap <Leader>j :w<Bar>SlimeSend1<space><C-r>=custom_command<enter><enter>
-" 
-"   <Leader>J write something to the custom_command variable
-nnoremap <Leader>J :let custom_command=""<left>
 " 
 " 
 "   general settings
