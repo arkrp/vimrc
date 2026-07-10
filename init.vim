@@ -148,4 +148,10 @@ let g:slime_cell_delimiter="cell delimiter not set"
 " 
 " 
 " 
+"  fugitive
 cnoreabbrev git Git
+" 
+"  fzf
+let g:fzf_vim = {}
+let g:fzf_vim.preview_window = []
+" 
