@@ -16,6 +16,8 @@ This nvim setup uses vim-plug. If you are having problems with plugins you can u
 
 The normal commands zo and zc are used to expand and contract folds. That is the main feature that this config was built around. To see more check out FOLD
 
+q in normal mode goes to netrw
+
 #section-end
 NVIM - basic custom keybinds #section-start
     <C-j> save the file and then enter the contents of the custom_command varaible as a vim command, intended as a quick save and compile hotkey

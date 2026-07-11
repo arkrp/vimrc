@@ -161,6 +161,17 @@ let g:netrw_localcopydircmd = 'cp -r'
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 " 
 "   make custom hotkeys
+"   map escape to go to netrw
+function! EscapeToNetrw()
+   if &ft == 'netrw'
+      call feedkeys('-')
+   else
+      :let @j=expand('%:t')
+      call feedkeys(":Ex\<Enter>/^\<C-r>j\<Enter>:noh\<Enter>")
+   endif
+endfunction
+nnoremap q :call EscapeToNetrw()<Enter>
+" 
 "   boilerplate
 augroup netrw_mapping
    autocmd!
@@ -169,8 +180,8 @@ augroup END
 " 
 "   mapping definition
 function! NetrwMapping()
-   "   map n to newfile
-   nmap <buffer> n %<Enter>
+   "   map N to newfile
+   nmap <buffer> N %<Enter>
    " 
    "   map ! to run in netrw directory command prefill
    nmap <buffer> ! :call NetrwDirectoryCommandPrompt()<Enter>
