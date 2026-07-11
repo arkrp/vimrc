@@ -44,7 +44,7 @@ Both of these hotkeys are for VISUAL LINE mode meaning they create folds surroun
 #section-end
 NETRW - used to browse files #section-start
    ! (when netrw is open) - run command in directory that netrw is viewing!
-   n (when netrw is open) - create new file (buffer) in directory
+   N (when netrw is open) - create new file (buffer) in directory
 #section-end
 FIND_AND_REPLACE - for when I forget again. #section-start
     Replace through the whole file:
