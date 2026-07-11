@@ -40,6 +40,10 @@ FOLD - used to quickly create foldmarkers! #section-start
     <Leader>-; create a unnamed foldmarker
 Both of these hotkeys are for VISUAL LINE mode meaning they create folds surrounding a set of lines!
 #section-end
+NETRW - used to browse files #section-start
+   ! (when netrw is open) - run command in directory that netrw is viewing!
+   n (when netrw is open) - create new file (buffer) in directory
+#section-end
 FIND_AND_REPLACE - for when I forget again. #section-start
     Replace through the whole file:
         :%s/pattern_to_replace/replacement_text/g

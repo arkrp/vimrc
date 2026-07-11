@@ -51,14 +51,6 @@ nnoremap <C-j> :w<Bar><C-r>=custom_command<enter><enter>
 nnoremap <Leader>J :let custom_command=""<left>
 " 
 " 
-"   configure netrw
-let g:netrw_keepdir = 1
-let g:netrw_winsize = 30
-let g:netrw_banner = 0
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-let g:netrw_localcopydircmd = 'cp -r'
-let g:netrw_localrmdircmd = 'rm -rf'
-" 
 " 
 "  force commonly written files to be local
 "This speeds up remote operation a lot!
@@ -155,3 +147,45 @@ cnoreabbrev git Git
 let g:fzf_vim = {}
 let g:fzf_vim.preview_window = []
 " 
+"  netrw
+"   don't let netrw change the working dir
+let g:netrw_keepdir = 1
+" 
+"   supress the banner
+let g:netrw_banner = 0
+" 
+"   let netrw copy recursively
+let g:netrw_localcopydircmd = 'cp -r'
+" 
+"   hide dot files by default
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+" 
+"   make custom hotkeys
+"   boilerplate
+augroup netrw_mapping
+   autocmd!
+   autocmd filetype netrw call NetrwMapping()
+augroup END
+" 
+"   mapping definition
+function! NetrwMapping()
+   "   map n to newfile
+   nmap <buffer> n %<Enter>
+   " 
+   "   map ! to run in netrw directory command prefill
+   nmap <buffer> ! :call NetrwDirectoryCommandPrompt()<Enter>
+   " 
+endfunction
+" 
+"   function to write netrw directory command prefill
+function! NetrwDirectoryCommandPrompt()
+   if empty(getreg('%'))
+      call feedkeys(":!", 'n')
+   else
+      call feedkeys(":!(cd \<C-r>% && )\<Left>", 'n')
+   endif
+endfunction
+" 
+" 
+" 
+
