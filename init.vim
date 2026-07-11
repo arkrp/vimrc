@@ -147,7 +147,7 @@ cnoreabbrev git Git
 let g:fzf_vim = {}
 let g:fzf_vim.preview_window = []
 " 
-"  netrw
+"  netrw
 "   don't let netrw change the working dir
 let g:netrw_keepdir = 1
 " 
@@ -188,4 +188,3 @@ endfunction
 " 
 " 
 " 
-
