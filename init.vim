@@ -30,8 +30,8 @@ call plug#end()
 :set clipboard+=unnamedplus
 :set breakindent
 :colorscheme default
-"   prevent deletion commands from yanking
-vnoremap d "_d
+"   prevent deletion commands from yanking by default (except dd)
+nnoremap dd dd
 nnoremap d "_d
 vnoremap x "_x
 nnoremap x "_x
@@ -148,8 +148,8 @@ let g:fzf_vim = {}
 let g:fzf_vim.preview_window = []
 " 
 "  netrw
-"   don't let netrw change the working dir
-let g:netrw_keepdir = 1
+"   let netrw change the working dir
+let g:netrw_keepdir = 0
 " 
 "   supress the banner
 let g:netrw_banner = 0
@@ -183,18 +183,9 @@ function! NetrwMapping()
    "   map N to newfile
    nmap <buffer> N %<Enter>
    " 
-   "   map ! to run in netrw directory command prefill
-   nmap <buffer> ! :call NetrwDirectoryCommandPrompt()<Enter>
+   "   map ! to command
+   nmap <buffer> ! :!
    " 
-endfunction
-" 
-"   function to write netrw directory command prefill
-function! NetrwDirectoryCommandPrompt()
-   if empty(getreg('%'))
-      call feedkeys(":!", 'n')
-   else
-      call feedkeys(":!(cd \<C-r>% && )\<Left>", 'n')
-   endif
 endfunction
 " 
 " 
